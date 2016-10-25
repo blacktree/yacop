@@ -58,16 +58,19 @@ public class YacopConfigParser {
             engineBuilder.image(obj.getString("image").trim());
         if (obj.has("localImage"))
             engineBuilder.localImage(obj.getBoolean("localImage"));
-        if (obj.has("volumes")) {
-            JSONArray volumesObjArray = obj.getJSONArray("volumes");
-            for (int i = 0; i < volumesObjArray.length(); i++) {
-                JSONObject volumeObj = volumesObjArray.getJSONObject(i);
-                engineBuilder.addVolume(new VolumeConfig.Builder()
-                        .containerPath(volumeObj.getString("containerPath").trim())
-                        .hostPath(volumeObj.getString("hostPath").trim())
-                        .mode(volumeObj.getString("mode").trim()).build());
-            }
-        }
+
+        //This volume mount feature will be reopen until YARN-3354 be merged.
+
+//        if (obj.has("volumes")) {
+//            JSONArray volumesObjArray = obj.getJSONArray("volumes");
+//            for (int i = 0; i < volumesObjArray.length(); i++) {
+//                JSONObject volumeObj = volumesObjArray.getJSONObject(i);
+//                engineBuilder.addVolume(new VolumeConfig.Builder()
+//                        .containerPath(volumeObj.getString("containerPath").trim())
+//                        .hostPath(volumeObj.getString("hostPath").trim())
+//                        .mode(volumeObj.getString("mode").trim()).build());
+//            }
+//        }
         if (obj.has("network")) {
             JSONObject networkObj = obj.getJSONObject("network");
             

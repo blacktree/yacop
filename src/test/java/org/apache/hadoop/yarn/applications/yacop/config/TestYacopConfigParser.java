@@ -6,6 +6,7 @@ import org.apache.hadoop.yarn.applications.yacop.config.BuilderException;
 import org.apache.hadoop.yarn.applications.yacop.config.YacopConfig;
 import org.apache.hadoop.yarn.applications.yacop.config.YacopConfigParser;
 import org.codehaus.jettison.json.JSONException;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
@@ -25,6 +26,9 @@ public class TestYacopConfigParser {
         assertEquals(expected, actual);
     }
 
+    //This volume mount feature will be reopen until YARN-3354 be merged.
+
+    @Ignore
     @org.junit.Test
     public void testVolumeMountConfigParse() throws Exception {
         YacopConfig config = YacopConfigParser.parse(YacopConfigCorpus.testVolumeMountInput);
@@ -33,6 +37,7 @@ public class TestYacopConfigParser {
         assertEquals(expected, actual);
     }
 
+    @Ignore
     @org.junit.Test
     public void testVolumeMountErrorContainerPathInputParse() throws Exception {
         thrown.expect(BuilderException.class);
@@ -40,6 +45,7 @@ public class TestYacopConfigParser {
         YacopConfigParser.parse(YacopConfigCorpus.testVolumeMountErrorContainerPathInput);
     }
 
+    @Ignore
     @org.junit.Test
     public void testVolumeMountErrorNoHostPathInputParse() throws Exception {
         thrown.expect(BuilderException.class);
