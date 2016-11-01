@@ -41,6 +41,10 @@ cat <<'EOF' > artifact.json
         'type': 'DOCKER',
         'image': 'centos',
         'localImage': true
+        'network': {
+            'mode': 'overlay',
+            'name': 'your_custom_network'
+        }
     }
 }
 EOF
