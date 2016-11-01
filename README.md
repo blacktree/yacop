@@ -67,7 +67,7 @@ yarn jar target/yacop-1.0-SNAPSHOT.jar registry
 etc/hadoop/yarn-site.xml
 <property>
     <name>yarn.nodemanager.runtime.linux.docker.allowed-container-networks</name>
-    <value>host,none,bridge</value>
+    <value>host,none,bridge,your_custom_network</value>
 </property>
 ```
 2.Docker container cannot access host by hostname since there is no DNS management currently.
