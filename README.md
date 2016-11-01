@@ -57,3 +57,13 @@ To list all applications history
 ```sh
 yarn jar target/yacop-1.0-SNAPSHOT.jar registry
 ```
+## YACOP Limitations
+1.To support the overlay network mode, using the following configuration:
+```sh
+etc/hadoop/yarn-site.xml
+<property>
+    <name>yarn.nodemanager.runtime.linux.docker.allowed-container-networks</name>
+    <value>host,none,bridge</value>
+</property>
+```
+2.Docker container cannot access host by hostname since there is no DNS management currently.
