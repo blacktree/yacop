@@ -41,6 +41,10 @@ cat <<'EOF' > artifact.json
         'type': 'DOCKER',
         'image': 'centos',
         'localImage': true
+        'network': {
+            'mode': 'overlay',
+            'name': 'your_custom_network'
+        }
     }
 }
 EOF
@@ -57,3 +61,13 @@ To list all applications history
 ```sh
 yarn jar target/yacop-1.0-SNAPSHOT.jar registry
 ```
+## YACOP Limitations
+1.To support the overlay network mode, using the following configuration:
+```sh
+etc/hadoop/yarn-site.xml
+<property>
+    <name>yarn.nodemanager.runtime.linux.docker.allowed-container-networks</name>
+    <value>host,none,bridge,your_custom_network</value>
+</property>
+```
+2.Docker container cannot access host by hostname since there is no DNS management currently.
